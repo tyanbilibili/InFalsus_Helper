@@ -4,6 +4,8 @@ In Falsus 本地曲库、成绩归档、自定义 Rating、Top 30 分表与游�
 
 最新版本：20261023
 
+<img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/6c9573ab-e661-4d7f-8b46-aeb335ee17c1" />
+
 ## 启动
 
 双击 `dist/InFalsusHelper-win32-x64/InFalsusHelper.exe`。
