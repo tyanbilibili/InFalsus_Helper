@@ -1,0 +1,58 @@
+@import url("../assets/fonts/fonts.css");
+
+:root { --cyan:#a2b1ff; --pink:#e876a8; --text:#edf1ff; --muted:#8795b1; }
+* { box-sizing: border-box; }
+html, body { width:100%; height:100%; margin:0; overflow:hidden; background:transparent; color:var(--text); font-family:"IF Arcaea Latin","IF Arcaea CJK",sans-serif; }
+.drawer {
+  position:absolute;
+  inset:0;
+  opacity:.94;
+  background:linear-gradient(105deg,#141c2ff2,#192031f5 62%,#211c2df2);
+  clip-path:polygon(0 0, calc(100% - 17px) 0, 100% 17px, 100% 100%, 17px 100%, 0 calc(100% - 17px));
+  transition:height 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms;
+}
+.drawer::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-top:1px solid #a2b1ff8f;
+  border-left:1px solid #a2b1ffa2;
+  border-right:1px solid #e876a86b;
+  border-bottom:1px solid #e876a856;
+  clip-path:inherit;
+}
+.drawer::after {
+  content:"";
+  position:absolute;
+  inset:8px;
+  pointer-events:none;
+  background:
+    linear-gradient(45deg,transparent 46%,#a2b1ffb8 47% 53%,transparent 54%) right top/12px 12px no-repeat,
+    linear-gradient(var(--cyan),var(--cyan)) left top/22px 1px no-repeat,
+    linear-gradient(var(--cyan),var(--cyan)) left top/1px 14px no-repeat,
+    linear-gradient(var(--pink),var(--pink)) right bottom/24px 1px no-repeat;
+  opacity:.8;
+}
+.drawer.collapsed { height:18px !important; opacity:.46; }
+.drawer.collapsed > :not(.edge) { opacity:0; }
+.edge {
+  position:absolute;
+  left:50%; bottom:0;
+  width:170px; height:2px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);
+  box-shadow:0 0 13px #a2b1ff88;
+}
+.tag { position:absolute; top:10px; font-size:8px; line-height:1; padding:4px 10px; color:#101624; font-weight:700; letter-spacing:.08em; background:linear-gradient(105deg,#bdc7ff,#c9add3); clip-path:polygon(0 0,100% 0,92% 100%,0 100%); transition:opacity 120ms; }
+.left-tag { left:16px; }
+.center-tag { left:50%; transform:translateX(-50%); background:linear-gradient(105deg,#a2b1ff,#d6c3e4); }
+.right-tag { right:16px; background:linear-gradient(105deg,#ebafcb,#d39fbf); }
+.player { position:absolute; left:18px; top:38px; width:28%; font-size:min(1.8vw,22px); font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:opacity 120ms; }
+.rating { position:absolute; left:34%; right:34%; top:28px; text-align:center; font-family:"IF Tech Numeric","Bahnschrift",sans-serif; font-size:min(3vw,31px); letter-spacing:-.02em; color:#dbe1ff; text-shadow:0 0 18px #a2b1ff55; transition:opacity 120ms, transform 150ms; }
+.delta { position:absolute; right:18px; top:38px; width:27%; text-align:right; font-family:"IF Tech Numeric","Bahnschrift",sans-serif; font-size:min(2.4vw,26px); color:var(--text); transition:opacity 120ms; }
+.delta.positive { color:var(--pink); }
+.delta.negative { color:#ff9c91; }
+.phase { position:absolute; left:50%; bottom:8px; transform:translateX(-50%); color:#687692; font-size:8px; letter-spacing:.12em; white-space:nowrap; transition:opacity 120ms; }
+.drawer.flash .rating { animation:rating-flash 600ms ease-out; }
+@keyframes rating-flash { 0% { transform:scale(.82); color:#fff; text-shadow:0 0 28px #fff; } 100% { transform:scale(1); } }
