@@ -2,15 +2,11 @@
 
 In Falsus 本地曲库、成绩归档、自定义 Rating、Top 30 分表与游戏内浮窗工具。
 
+最新版本：20261023
+
 ## 启动
 
-开发目录中双击 `启动.bat`，或运行：
-
-```powershell
-npm start
-```
-
-发行版直接双击 `dist/InFalsusHelper-win32-x64/InFalsusHelper.exe`。
+双击 `dist/InFalsusHelper-win32-x64/InFalsusHelper.exe`。
 
 ## 功能
 
@@ -35,7 +31,7 @@ npm start
 
 ## Rating 算法
 
-单曲 Rating 使用游戏整数分数和谱面定数 `C`：
+Arcaea同款算法。单曲 Rating 使用游戏整数分数和谱面定数 `C`：
 
 ```text
 分数 ≥ 100,000,000:
@@ -117,3 +113,17 @@ app/scripts/phase-monitor.exe
 ## 素材与许可
 
 界面沿用参考程序的科技档案视觉体系。字体许可位于 `app/assets/fonts/`，Electron 与 Chromium 许可见发行目录。In Falsus 名称、曲绘和游戏资源归原权利人所有；本工具为非官方本地辅助软件。
+
+## 注意事项
+
+- 精确定数表为开发者本人主观+社区定数表辅助，主观性非常强！如果你不认可开发者的定数，你可以打开开发者模式自己修改。
+  
+# 特别鸣谢！！！
+
+**RTX3N0N**
+
+## 鸣谢
+- Tyan-an
+- Deepseek-v4.1-flash
+- Reasonix
+- Codex
