@@ -2,13 +2,23 @@
 
 In Falsus 本地曲库、成绩归档、自定义 Rating、Top 30 分表与游戏内浮窗工具。
 
-最新版本：20261023
+最新版本：20261024（1.2）
 
-<img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/6c9573ab-e661-4d7f-8b46-aeb335ee17c1" />
+更新内容：
+
+1.优化了架构，减少了一些CPU和存储的占用，增强了一定的性能。
+
+2.新增了2种rating算法。现在有类Arcaea算法（默认）、类DJMAX算法（特别鸣谢@RTX3N0N）、类Phigros算法。如果你有不错的原创算法，欢迎投稿！
+
+3.历史记录支持搜索了。
+
+4.bug修复。
+
+<img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/a4c24f3c-b4d1-457f-a462-b43be796c219" />
 
 ## 启动
 
-双击 `dist/InFalsusHelper-win32-x64/InFalsusHelper.exe`。
+双击 `InFalsusHelper.exe`。
 
 ## 功能
 
@@ -120,6 +130,9 @@ app/scripts/phase-monitor.exe
 
 - 精确定数表为开发者本人主观+社区定数表辅助，主观性非常强！如果你不认可开发者的定数，你可以打开开发者模式自己修改。
 - 部分源码因为有的文件大小＞25MB，上传过程被打断了。因此Code里的代码不全。如有学习需要，推荐逆向releases获取代码！
+- **如果你想要获取开发者最新的默认精确定数表，请下载源码里的`precise-defaults.json`，然后替换Releases包里的`data/precise-defaults.json`，最后打开exe-设置-“还原到默认精确定数”即可！**
+<img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/6c2a037d-9544-4bad-bf89-0ff6375bf83b" />
+
   
 # 特别鸣谢！！！
 
