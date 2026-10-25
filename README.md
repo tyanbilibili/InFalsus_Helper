@@ -136,7 +136,9 @@ app/scripts/phase-monitor.exe
   
 # 特别鸣谢！！！
 
-[![RTX3N0N](https://avatars.githubusercontent.com/u/325133286?v=4)](https://github.com/rTxenoN)
+<a href="https://github.com/rTxenoN">
+  <img src="https://avatars.githubusercontent.com/u/325133286?v=4" width="100" height="100">
+</a>
 
 [rTxenoN](https://github.com/rTxenoN)
 
