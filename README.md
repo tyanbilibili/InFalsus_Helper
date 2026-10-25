@@ -8,7 +8,7 @@ In Falsus 本地曲库、成绩归档、自定义 Rating、Top 30 分表与游�
 
 1.优化了架构，减少了一些CPU和存储的占用，增强了一定的性能。
 
-2.新增了2种rating算法。现在有类Arcaea算法（默认）、类DJMAX算法（特别鸣谢@RTX3N0N）、类Phigros算法。如果你有不错的原创算法，欢迎投稿！
+2.新增了2种rating算法。现在有类Arcaea算法（默认）、类DJMAX算法（特别鸣谢[@rTxenoN](https://github.com/rTxenoN)）、类Phigros算法。如果你有不错的原创算法，欢迎投稿！
 
 3.历史记录支持搜索了。
 
@@ -136,7 +136,9 @@ app/scripts/phase-monitor.exe
   
 # 特别鸣谢！！！
 
-**RTX3N0N**
+[![RTX3N0N](https://avatars.githubusercontent.com/u/325133286?v=4)](https://github.com/rTxenoN)
+
+[rTxenoN](https://github.com/rTxenoN)
 
 ## 鸣谢
 - Tyan-an
