@@ -43,7 +43,7 @@ In Falsus 本地曲库、成绩归档、自定义 Rating、Top 30 分表与游�
 
 ## Rating 算法
 
-Arcaea同款算法。单曲 Rating 使用游戏整数分数和谱面定数 `C`：
+本Helper默认采用Arcaea同款算法。单曲 Rating 使用游戏整数分数和谱面定数 `C`：
 
 ```text
 分数 ≥ 100,000,000:
@@ -63,8 +63,6 @@ Rating = (Top10 单曲 Rating × 2 + Top11–30 单曲 Rating × 1) / 40
 ```
 
 界面显示三位小数，内部计算保留精确有理数。
-
-所有单曲 Rating、加权贡献与总 Rating 都按**去尾法**（直接截断多余小数）显示，不做四舍五入。因此浮窗显示的“本次变化”就是（新总 Rating 三位小数）−（旧总 Rating 三位小数），与屏幕上的数字完全一致。
 
 ## 数据目录
 
@@ -93,8 +91,6 @@ resources/app/app/data/    # 程序内置后备，data/ 缺失时使用
 默认精确定数表的优先级是：exe 同级的 `data\precise-defaults.json` → 程序内置的 `resources\app\app\data\precise-defaults.json`。所以解压后第一份就在 exe 旁边，看得见也改得动；如果它被删掉，下次启动会自动从内置那份恢复出来。
 
 点“设置当前精确定数表为默认精确定数”会覆盖 exe 同级那份（需要程序目录可写，写不进去才回退到内置位置）；“还原到默认精确定数”则把当前表恢复成它。它与存档账号无关，下载解压就自带。
-
-如果要分发给别人，直接打包整个 `dist/InFalsusHelper-win32-x64` 即可，`data/precise-defaults.json` 会一起带过去；再删除 `user_data`、`catalog_data` 等本机数据，避免包含自己的存档标识与成绩。
 
 ## 输入钩子
 
@@ -129,7 +125,7 @@ app/scripts/phase-monitor.exe
 ## 注意事项
 
 - 精确定数表为开发者本人主观+社区定数表辅助，主观性非常强！如果你不认可开发者的定数，你可以打开开发者模式自己修改。
-- ~~部分源码因为有的文件大小＞25MB，上传过程被打断了。因此Code里的代码不全。如有学习需要，推荐逆向releases获取代码！~~ 源码已成功上传。
+- ~~部分源码因为有的文件大小＞25MB，上传过程被打断了。因此Code里的代码不全。如有学习需要，推荐逆向releases获取代码！~~ 源码已成功上传。当然，逆向依旧是获取最精确源码的途径。
 - **如果你想要获取开发者最新的默认精确定数表，请下载源码里的`precise-defaults.json`，然后替换Releases包里的`data/precise-defaults.json`，最后打开exe-设置-“还原到默认精确定数”即可！**
 <img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/6c2a037d-9544-4bad-bf89-0ff6375bf83b" />
 
@@ -143,7 +139,7 @@ app/scripts/phase-monitor.exe
 [rTxenoN](https://github.com/rTxenoN)
 
 ## 鸣谢
-- Tyan-an
+- [Tyan-an](https://github.com/tyanbilibili)
 - Deepseek-v4.1-flash
 - Reasonix
 - Codex
