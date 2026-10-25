@@ -129,7 +129,7 @@ app/scripts/phase-monitor.exe
 ## 注意事项
 
 - 精确定数表为开发者本人主观+社区定数表辅助，主观性非常强！如果你不认可开发者的定数，你可以打开开发者模式自己修改。
-- 部分源码因为有的文件大小＞25MB，上传过程被打断了。因此Code里的代码不全。如有学习需要，推荐逆向releases获取代码！
+- ~~部分源码因为有的文件大小＞25MB，上传过程被打断了。因此Code里的代码不全。如有学习需要，推荐逆向releases获取代码！~~ 源码已成功上传。
 - **如果你想要获取开发者最新的默认精确定数表，请下载源码里的`precise-defaults.json`，然后替换Releases包里的`data/precise-defaults.json`，最后打开exe-设置-“还原到默认精确定数”即可！**
 <img width="2223" height="1414" alt="image" src="https://github.com/user-attachments/assets/6c2a037d-9544-4bad-bf89-0ff6375bf83b" />
 
