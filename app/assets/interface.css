@@ -1,0 +1,73 @@
+/* Archive UI / 0.4.0. Shared by file:// and loopback views. Original geometry;
+   text/number font families and the existing fixed-grid wave remain unchanged. */
+:root{--archive-cyan:#a2b1ff;--archive-pink:#e876a8;--archive-ink:#101624}
+.archive-surface{
+ position:relative;isolation:isolate;min-width:0;
+ clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
+ border:0;box-shadow:none;
+ background:linear-gradient(110deg,#a2b1ff09,#bab4e804 55%,#e876a807),url("interface-triangles.svg") left top / 864px 498.830633px repeat,#192031;
+}
+/* Exact 1px parallel ring, not a rectangular shadow behind a cut corner. */
+.archive-frame,.archive-frame::before,.archive-frame::after{position:absolute;pointer-events:none;user-select:none;display:block}
+.archive-frame{inset:0;z-index:2;overflow:hidden}
+.archive-frame::before{content:"";inset:0;background:linear-gradient(110deg,#a2b1ff8a,#a2b1ff22 52%,#e876a85c);
+ clip-path:polygon(evenodd,0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px),0 0,1px 1px,1px calc(100% - 20.414px),20.414px calc(100% - 1px),calc(100% - 1px) calc(100% - 1px),calc(100% - 1px) 20.414px,calc(100% - 20.414px) 1px,1px 1px,0 0);
+}
+.archive-frame::after{content:"";inset:6px;
+ background:linear-gradient(45deg,transparent 46%,#a2b1ffb8 47% 53%,transparent 54%) right top/18px 18px no-repeat,
+ linear-gradient(45deg,transparent 46%,#a2b1ff99 47% 53%,transparent 54%) left bottom/18px 18px no-repeat,
+ linear-gradient(var(--archive-cyan),var(--archive-cyan)) left top/32px 2px no-repeat,
+ linear-gradient(var(--archive-cyan),var(--archive-cyan)) left top/2px 22px no-repeat,
+ linear-gradient(#a2b1ffa8,#a2b1ffa8) right bottom/32px 2px no-repeat,
+ linear-gradient(#a2b1ffa8,#a2b1ffa8) right bottom/2px 22px no-repeat,
+ linear-gradient(#e876a899,#e876a899) right 42px/2px 28px no-repeat,
+ repeating-linear-gradient(110deg,#a2b1ff66 0 8px,transparent 8px 13px) 30px bottom/40px 2px no-repeat;
+}
+.archive-tab{
+ display:inline-flex;align-items:center;width:max-content;max-width:100%;min-height:24px;
+ padding:3px 18px;gap:4px;line-height:1.4;font-size:11px;font-weight:700;letter-spacing:.08em;
+ color:var(--archive-ink);background:linear-gradient(110deg,#a2b1fff0,#bbaed9e8),url("interface-triangles.svg");
+ /* Decorative labels are rectangular; structural panels keep their chamfers. */
+ clip-path:none;border-radius:0;
+}
+.archive-surface .archive-tab{color:var(--archive-ink)}
+.notice{padding:24px 32px}
+.status-card>.archive-tab{margin-bottom:12px}
+.status-card h2{margin:0 0 16px;font-size:22px}
+.status-card>strong{font-size:16px;font-weight:500}
+.status-card dl{gap:8px 24px;margin:20px 0}
+.status-card dd{font-size:22px}
+.rating-card{min-height:352px;gap:24px}
+.rating-card #rating{font-size:clamp(64px,7.5vw,100px);line-height:1.12;letter-spacing:-.035em}
+.rating-card .rating-caption{font-size:10px;letter-spacing:.15em;color:#9da9c3}
+.rating-footer{font-size:13px}
+.rating-footer>span{font-size:11px}
+.status-card{min-height:352px}
+.score-card{height:256px}
+.score-card #rating-total{font-size:clamp(56px,6vw,86px);line-height:1.15;letter-spacing:-.035em}
+.score-card>div:first-of-type{gap:12px;align-items:center}
+#data-badge{font-size:11px;white-space:nowrap}
+header h1{font-size:clamp(28px,3vw,40px);letter-spacing:-.035em}
+.intro h1{font-size:clamp(28px,3.5vw,42px);line-height:1.35;letter-spacing:-.03em}
+.intro h1 em{font-size:.65em;color:#a2b1ff}
+.panel h2,.section-head h2{font-size:20px}
+.notice,.declaration{font-size:13px;line-height:1.75}
+.notice>.archive-tab{margin-bottom:4px}
+.panel{background-color:#192031}
+.panel summary{padding-right:12px;line-height:1.7}
+button,input,select{border-radius:0}
+button{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #a2b1ff;outline-offset:-3px}
+button:hover:not(:disabled){filter:brightness(1.12)}
+@media(max-width:799px){
+ .notice{padding:24px}
+ .rating-card,.status-card{min-height:0;padding:24px;gap:24px}
+ .rating-card #rating{font-size:72px;margin:16px 0 4px}
+ .score-card #rating-total{font-size:64px}
+ .score-card{padding:24px}
+ .archive-tab{font-size:10px;letter-spacing:.04em}
+ .status-card dl{margin:16px 0}
+ header h1{font-size:28px}
+ .intro h1{font-size:32px}
+}
+@media(prefers-reduced-motion:reduce){.archive-surface *{transition:none!important;animation:none!important}}

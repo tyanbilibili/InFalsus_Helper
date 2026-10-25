@@ -1,0 +1,21 @@
+{
+  "source_page": "https://infalsus.lowiro.com/en-us/",
+  "source_image": "https://infalsus.lowiro.com/_astro/if-logo.C7QZVPjP.png",
+  "retrieved_at": "2026-10-15T19:55:31.503589+08:00",
+  "file": "title.png",
+  "sha256": "1efbc2bfbb86c469b67999331842671801ce0015f3a947c49229027b25924740",
+  "bytes": 1139399,
+  "width": 4096,
+  "height": 2011,
+  "mode": "RGBA",
+  "alpha_bounds_ltrb": [
+    429,
+    580,
+    3552,
+    1440
+  ],
+  "file_modified": false,
+  "rendering": "Alpha-bounds fit at runtime; original PNG is unchanged.",
+  "use_context": "Local personal-use launcher; explicitly requested by workspace owner. No upstream license grant inferred.",
+  "guidelines": "https://infalsus.lowiro.com/en-us/derivative-guidelines"
+}

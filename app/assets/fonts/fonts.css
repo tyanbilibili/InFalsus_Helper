@@ -1,0 +1,11 @@
+/* Local OFL fonts. ASCII numeric glyphs use Oxanium; Latin/CJK text keeps
+   Kazesawa/Noto SC. Unmapped Unicode characters use the system fallback. */
+@font-face{font-family:"IF Arcaea Latin";src:url("Kazesawa-Regular.ttf") format("truetype");font-weight:100 500;font-style:normal;font-display:swap;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00D6,U+00D8-00F6,U+00F8-024F,U+1E00-1EFF}
+@font-face{font-family:"IF Arcaea Latin";src:url("Kazesawa-Bold.ttf") format("truetype");font-weight:600 900;font-style:normal;font-display:swap;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00D6,U+00D8-00F6,U+00F8-024F,U+1E00-1EFF}
+@font-face{font-family:"IF Arcaea CJK";src:url("IFCJKText-Regular.ttf") format("truetype");font-weight:100 500;font-style:normal;font-display:swap;unicode-range:U+2E80-3006,U+3008-3020,U+302A-3037,U+303B-30FF,U+31C0-31EF,U+3400-9FFF,U+F900-FAFF,U+FF01-FF0F,U+FF1A-FF20,U+FF3B-FF40,U+FF5B-FF65,U+20000-323AF}
+@font-face{font-family:"IF Arcaea CJK";src:url("IFCJKText-Bold.ttf") format("truetype");font-weight:600 900;font-style:normal;font-display:swap;unicode-range:U+2E80-3006,U+3008-3020,U+302A-3037,U+303B-30FF,U+31C0-31EF,U+3400-9FFF,U+F900-FAFF,U+FF01-FF0F,U+FF1A-FF20,U+FF3B-FF40,U+FF5B-FF65,U+20000-323AF}
+/* Non-mapped code punctuation retains its monospace fallback. */
+code{font-family:"IF Tech Numeric","IF Arcaea Latin","IF Arcaea CJK",monospace}
+
+@font-face{font-family:"IF Tech Numeric";src:url("Oxanium-Regular.ttf") format("truetype");font-weight:100 500;font-style:normal;font-display:swap;unicode-range:U+0030-0039,U+002E,U+002C,U+0025,U+002B,U+002D,U+002F}
+@font-face{font-family:"IF Tech Numeric";src:url("Oxanium-Bold.ttf") format("truetype");font-weight:600 900;font-style:normal;font-display:swap;unicode-range:U+0030-0039,U+002E,U+002C,U+0025,U+002B,U+002D,U+002F}

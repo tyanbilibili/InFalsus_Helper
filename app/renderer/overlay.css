@@ -1,0 +1,121 @@
+/* fonts.css is already linked from overlay.html; importing it here loaded it twice. */
+
+:root {
+  --cyan:#a2b1ff;
+  --pink:#e876a8;
+  --text:#edf1ff;
+  --muted:#8795b1;
+  /* RATING 数字的字号：三栏数字区都以它为高度基准 */
+  --rating-size: min(4.2vw, 42px);
+}
+* { box-sizing: border-box; }
+html, body { width:100%; height:100%; margin:0; overflow:hidden; background:transparent; color:var(--text); font-family:"IF Arcaea Latin","IF Arcaea CJK",sans-serif; }
+
+/*
+ * 布局：顶部一行小标签，下面一行数字。
+ * 三栏等高，数字在「标签下方到窗口底部」的空间里垂直居中，
+ * 因此上下留白自然相等，玩家名/变化量的中心线也和 RATING 对齐。
+ */
+.drawer {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  padding:6px 18px 0;
+  opacity:.94;
+  background:linear-gradient(105deg,#141c2ff2,#192031f5 62%,#211c2df2);
+  clip-path:polygon(0 0, calc(100% - 17px) 0, 100% 17px, 100% 100%, 17px 100%, 0 calc(100% - 17px));
+  transition:height 180ms cubic-bezier(.2,.8,.2,1), opacity 120ms;
+}
+.drawer::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-top:1px solid #a2b1ff8f;
+  border-left:1px solid #a2b1ffa2;
+  border-right:1px solid #e876a86b;
+  border-bottom:1px solid #e876a856;
+  clip-path:inherit;
+}
+.drawer::after {
+  content:"";
+  position:absolute;
+  inset:8px;
+  pointer-events:none;
+  background:
+    linear-gradient(45deg,transparent 46%,#a2b1ffb8 47% 53%,transparent 54%) right top/12px 12px no-repeat,
+    linear-gradient(var(--cyan),var(--cyan)) left top/22px 1px no-repeat,
+    linear-gradient(var(--cyan),var(--cyan)) left top/1px 14px no-repeat,
+    linear-gradient(var(--pink),var(--pink)) right bottom/24px 1px no-repeat;
+  opacity:.8;
+}
+.drawer.collapsed { height:18px !important; opacity:.46; }
+.drawer.collapsed > :not(.edge) { opacity:0; }
+.edge {
+  position:absolute;
+  left:50%; bottom:0;
+  width:170px; height:2px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);
+  box-shadow:0 0 13px #a2b1ff88;
+}
+
+/* 三栏 */
+.row { display:flex; flex:1 1 auto; min-height:0; }
+.cell { display:flex; flex-direction:column; min-width:0; position:relative; z-index:1; }
+.cell.left { flex:0 0 30%; align-items:flex-start; }
+.cell.center { flex:1 1 auto; align-items:center; }
+.cell.right { flex:0 0 30%; align-items:flex-end; }
+
+.tag {
+  flex:none;
+  font-size:7.5px; line-height:1; padding:3px 9px;
+  color:#101624; font-weight:700; letter-spacing:.08em;
+  background:linear-gradient(105deg,#bdc7ff,#c9add3);
+  clip-path:polygon(0 0,100% 0,92% 100%,0 100%);
+  transition:opacity 120ms;
+}
+.cell.center > .tag { background:linear-gradient(105deg,#a2b1ff,#d6c3e4); }
+.cell.right > .tag { background:linear-gradient(105deg,#ebafcb,#d39fbf); }
+
+/* 数字区：撑满标签以下的全部空间，数字在其中垂直居中 */
+.cell > .value {
+  flex:1 1 auto;
+  display:flex;
+  align-items:center;
+  min-height:0;
+  width:100%;
+  /* 数字字形的上沿空隙小于下沿（ascent/descent 不对称），
+     盒居中会让文字整体偏上；按字号比例补一点上内边距，让上下留白相等。 */
+  padding-top:calc(var(--rating-size) * 0.12);
+}
+.cell.center > .value { justify-content:center; }
+.cell.right > .value { justify-content:flex-end; }
+
+.player {
+  /* line-height 要留出 y / g 这类字母的下伸部，否则会被 overflow:hidden 裁掉 */
+  font-size:min(2.6vw,26px); line-height:1.3; font-weight:700;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;
+  /* 小字号的行盒更矮，flex 居中后视觉中心会略低于 RATING；
+     按 RATING 字号成比例上抬，让三者的中心线对齐。 */
+  transform:translateY(calc(var(--rating-size) * -0.10));
+  transition:opacity 120ms;
+}
+.rating {
+  font-family:"IF Tech Numeric","Bahnschrift",sans-serif;
+  font-size:var(--rating-size); line-height:1; letter-spacing:-.025em;
+  color:#dbe1ff; text-shadow:0 0 20px #a2b1ff66;
+  transition:opacity 120ms, transform 150ms;
+}
+.delta {
+  font-family:"IF Tech Numeric","Bahnschrift",sans-serif;
+  font-size:min(3.4vw,34px); line-height:1;
+  color:var(--text); white-space:nowrap;
+  transform:translateY(calc(var(--rating-size) * -0.10));
+  transition:opacity 120ms;
+}
+.delta.positive { color:var(--pink); }
+.delta.negative { color:#ff9c91; }
+.drawer.flash .rating { animation:rating-flash 600ms ease-out; }
+@keyframes rating-flash { 0% { transform:scale(.82); color:#fff; text-shadow:0 0 28px #fff; } 100% { transform:scale(1); } }

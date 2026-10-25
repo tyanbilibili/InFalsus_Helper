@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' helper-asset: data:; font-src 'self'; connect-src 'self' helper-asset:">
+  <title>InFalsus Helper</title>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../assets/interface.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="titlebar">
+      <div class="title-brand">
+        <span class="brand-mark">IF</span>
+        <span>IN FALSUS <b>HELPER</b></span>
+        <small>LOCAL PERFORMANCE SYSTEM / <span id="app-version">v—</span></small>
+      </div>
+      <div class="title-status">
+        <span id="global-dot" class="status-dot"></span>
+        <span id="global-status">正在初始化</span>
+      </div>
+      <div class="window-actions">
+        <button id="win-min" aria-label="最小化">−</button>
+        <button id="win-max" aria-label="最大化">□</button>
+        <button id="win-close" aria-label="关闭">×</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="identity">
+          <div class="identity-kicker">PERFORMANCE ARCHIVE</div>
+          <div class="identity-name">RATING<br><em>CONTROL</em></div>
+          <p>本地只读成绩分析<br>非官方玩家工具</p>
+        </div>
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-item active" data-page="dashboard"><span>01</span>总览</button>
+          <button class="nav-item" data-page="catalog"><span>02</span>曲库</button>
+          <button class="nav-item" data-page="records"><span>03</span>历史记录</button>
+          <button class="nav-item" data-page="settings"><span>04</span>设置</button>
+          <button id="nav-constants" class="nav-item" data-page="constants" hidden><span>05</span>精确定数表</button>
+        </nav>
+        <div class="side-data">
+          <div><span>SONGS</span><b id="side-songs">—</b></div>
+          <div><span>CHARTS</span><b id="side-charts">—</b></div>
+          <div><span>ARCHIVE</span><b id="side-records">—</b></div>
+        </div>
+        <div class="side-footer">
+          <span>READ ONLY / LOCAL</span>
+          <span id="version-label">BUILD 1.0.0</span>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="page-dashboard" class="page active">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">IN FALSUS / PERFORMANCE CONTROL</div>
+              <h1>Rating <span>总览</span></h1>
+              <p>读取游戏本地存档与 Unity 曲库，计算个人 Top 30 表现档案。</p>
+            </div>
+            <div class="heading-actions">
+              <button id="quick-launch" class="primary">启动游戏</button>
+              <button id="export-top30" class="accent">导出 Top30</button>
+            </div>
+          </div>
+
+          <div class="hero-grid">
+            <article class="archive-surface panel rating-hero">
+              <span class="archive-frame"></span>
+              <div class="archive-tab">CURRENT RATING</div>
+              <div class="rating-number" id="rating-value">--.---</div>
+              <div class="rating-meta">
+                <span id="rating-change">等待有效记录</span>
+                <span id="rating-rule">SCORE CURVE / 98M BASE</span>
+              </div>
+              <div class="rating-bars" id="rating-bars"></div>
+            </article>
+
+            <article class="archive-surface panel player-card">
+              <span class="archive-frame"></span>
+              <div class="panel-head">
+                <div class="player-identity">
+                  <div class="archive-tab">PLAYER</div>
+                  <input id="player-nickname" class="nickname-input" type="text" maxlength="24"
+                         placeholder="LOCAL PLAYER" aria-label="玩家昵称" spellcheck="false" autocomplete="off">
+                </div>
+                <span class="tag">READ ONLY</span>
+              </div>
+              <div class="player-data">
+                <div><span>存档账号</span><b id="player-account">等待发现</b></div>
+                <div><span>有效谱面</span><b id="player-selected">— / 30</b></div>
+                <div><span>已归档记录</span><b id="player-observed">—</b></div>
+                <div><span>历史槽位</span><b id="player-history">— / 1024</b></div>
+              </div>
+              <select id="account-select" class="account-select" aria-label="选择存档账号" hidden></select>
+              <div class="thin-line"></div>
+              <div class="micro-status">
+                <span>LAST SYNC</span><b id="last-sync">—</b>
+              </div>
+            </article>
+
+            <article class="archive-surface panel game-card">
+              <span class="archive-frame"></span>
+              <div class="panel-head">
+                <div><div class="archive-tab">GAME LINK</div><h2>游戏连接</h2></div>
+                <span id="phase-tag" class="tag">UNKNOWN</span>
+              </div>
+              <div class="game-path" id="game-path">尚未定位 In Falsus</div>
+              <div class="details-grid">
+                <div><span>BUILD</span><b id="game-build">—</b></div>
+                <div><span>CATALOG</span><b id="catalog-source">—</b></div>
+                <div><span>MONITOR</span><b id="phase-notice">等待游戏连接</b></div>
+                <div><span>OVERLAY</span><b id="overlay-state-label">—</b></div>
+              </div>
+              <div class="button-row">
+                <button id="locate-game">定位游戏</button>
+                <button id="refresh-catalog">刷新曲库</button>
+              </div>
+            </article>
+          </div>
+
+          <section class="section-block">
+            <div class="section-title">
+              <div><div class="eyebrow">BEST PERFORMANCE</div><h2>Top 30</h2></div>
+            </div>
+            <div class="top-list" id="top30-list"></div>
+          </section>
+        </section>
+
+        <section id="page-catalog" class="page">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">LOCAL DATA / ADDRESSABLES</div>
+              <h1>曲库 <span>DATA INDEX</span></h1>
+              <p>歌曲名称、谱面 ID、难度与定数均从当前游戏资源读取。</p>
+            </div>
+            <div class="search-box"><input id="catalog-search" type="search" placeholder="搜索歌曲 / 艺术家"></div>
+          </div>
+          <div class="catalog-grid" id="catalog-grid"></div>
+        </section>
+
+        <section id="page-records" class="page">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">OBSERVED HISTORY / LOCAL ARCHIVE</div>
+              <h1>历史 <span>RECORDS</span></h1>
+              <p>游戏滚动历史会自动去重并保存；列表按游戏记录顺序从新到旧排列。</p>
+            </div>
+            <div class="heading-actions">
+              <div class="search-box"><input id="records-search" type="search" placeholder="搜索歌曲 / 谱面 / 难度"></div>
+              <button id="reveal-archive">打开归档目录</button>
+            </div>
+          </div>
+          <div id="records-summary" class="record-summary"></div>
+          <div class="archive-surface panel record-panel">
+            <span class="archive-frame"></span>
+            <div class="record-head">
+              <span>歌曲 / 谱面</span><span>分数</span><span>判定</span><span>定数</span><span>单曲 Rating</span><span>首次同步</span>
+            </div>
+            <div id="record-list" class="record-list"></div>
+          </div>
+        </section>
+
+        <section id="page-constants" class="page">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">DEVELOPER MODE / PRECISE CONSTANTS</div>
+              <h1>精确定数 <span>TABLE</span></h1>
+              <p>双击谱面定数框编辑一位小数；未修改的谱面自动使用游戏原定数 x.0。</p>
+            </div>
+            <div class="heading-actions">
+              <div class="search-box"><input id="constants-search" type="search" placeholder="搜索歌曲 / 艺术家"></div>
+              <button id="sort-constants">按 ULT 排序</button>
+              <button id="save-constants" class="primary">保存精确定数</button>
+            </div>
+          </div>
+          <div class="catalog-grid" id="constants-grid"></div>
+        </section>
+
+        <section id="page-settings" class="page">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">SYSTEM / INPUT & ENVIRONMENT</div>
+              <h1>设置 <span>CONTROL</span></h1>
+              <p>游戏连接、浮窗与全局输入钩子都在本机运行。</p>
+            </div>
+          </div>
+          <div class="settings-grid">
+            <article class="archive-surface panel settings-card wide">
+              <span class="archive-frame"></span>
+              <div class="panel-head"><div><div class="archive-tab">DEVELOPER / EXPERIMENTAL</div><h2>开发者模式</h2></div><span class="tag">LOCAL ONLY</span></div>
+              <label class="switch-line"><span><b>启用精确定数表</b><small>开启后显示“05 精确定数表”，所有 Rating 与 Top30 导出均使用精确值</small></span><input id="developer-mode" type="checkbox"><i></i></label>
+              <div class="switch-line segmented-line">
+                <span><b>总 Rating 算法</b><small>切换后单曲 Rating、总 Rating、历史记录与 Top30 导出全部按新算法重算</small></span>
+                <div id="rating-algorithm" class="segmented" data-value="arcaea">
+                  <button type="button" class="segmented-arrow" data-dir="-1" aria-label="上一个算法">‹</button>
+                  <span class="segmented-value">Arcaea 算法</span>
+                  <button type="button" class="segmented-arrow" data-dir="1" aria-label="下一个算法">›</button>
+                </div>
+              </div>
+              <div class="button-row wrap dev-actions">
+                <button id="set-default-constants">设置当前精确定数表为默认精确定数</button>
+                <button id="reset-default-constants">还原到默认精确定数</button>
+              </div>
+              <p class="hint">精确定数只影响本地计算，不改游戏文件。修改项保存在 user_data/precise-constants.json；“默认精确定数”是随程序自带的 app/data/precise-defaults.json，不依赖存档账号。</p>
+            </article>
+
+            <article class="archive-surface panel settings-card">
+              <span class="archive-frame"></span>
+              <div class="panel-head"><div><div class="archive-tab">GAME ENVIRONMENT</div><h2>游戏与曲库</h2></div><span class="tag">STEAM</span></div>
+              <div class="setting-line vertical">
+                <span>游戏目录</span>
+                <code id="settings-game-path">尚未定位</code>
+              </div>
+              <div class="button-row wrap">
+                <button id="auto-locate">自动查找 Steam</button>
+                <button id="settings-locate">手动定位</button>
+                <button id="settings-refresh">重新读取 Data</button>
+                <button id="settings-launch" class="primary">一键启动</button>
+              </div>
+              <p class="hint">自动查找会读取 Steam 的 libraryfolders.vdf 与 App ID 3971950 清单。</p>
+            </article>
+
+            <article class="archive-surface panel settings-card">
+              <span class="archive-frame"></span>
+              <div class="panel-head"><div><div class="archive-tab">OVERLAY / GAME PHASE</div><h2>游戏内浮窗</h2></div><span id="phase-settings-tag" class="tag">UNKNOWN</span></div>
+              <label class="switch-line"><span><b>启用 Rating 浮窗</b><small>打歌时自动隐藏，结算时自动展开</small></span><input id="overlay-enabled" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>手动开关按键</b><small>全局生效，可隐藏/展开浮窗</small></span><select id="overlay-key"><option>F5</option><option>F6</option><option>F7</option><option>F8</option><option>F9</option><option>F10</option></select></label>
+              <p class="hint">阶段检测仅只读游戏进程中的场景归属栈，不注入游戏、不修改内存。</p>
+            </article>
+
+            <article class="archive-surface panel settings-card wide">
+              <span class="archive-frame"></span>
+              <div class="panel-head">
+                <div><div class="archive-tab">INPUT HOOK / GLOBAL</div><h2>监听、改键与热键屏蔽</h2></div>
+                <span id="input-state-tag" class="tag">STARTING</span>
+              </div>
+              <div class="setting-note">
+                <b>Alt + Z</b> 可随时开启 / 暂停监听。以下选项仅在监听中生效。
+              </div>
+              <label class="switch-line"><span><b>启用全局输入监听</b><small>G → g.mp3，CapsLock → capslock.mp3，后按覆盖前</small></span><input id="input-enabled" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>播放按键音效</b><small>保留参考程序的 G / CapsLock 音效行为</small></span><input id="input-sounds" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>屏蔽 CapsLock 大小写切换</b><small>按键仍能触发音效，但不再改变 CapsLock 状态</small></span><input id="swallow-caps" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>按键改写：CapsLock→LShift，G→F</b><small>使用硬件扫描码，兼容 DirectInput / Raw Input</small></span><input id="remap-keyboard" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>鼠标改写：左键→LShift，右键→Space，中键→左键</b><small>启用后请用鼠标中键执行正常左键点击</small></span><input id="remap-mouse" type="checkbox"><i></i></label>
+              <label class="switch-line"><span><b>屏蔽 Win+Shift+S / Win+Shift+R</b><small>阻止系统截图与录屏热键被误触，不改注册表</small></span><input id="block-hotkeys" type="checkbox"><i></i></label>
+              <div class="button-row">
+                <button id="restart-input">重启输入服务</button>
+                <button id="relaunch-admin">以管理员身份重启</button>
+              </div>
+              <p id="input-detail" class="hint">正在安装键盘与鼠标低级钩子…</p>
+            </article>
+
+            <article class="archive-surface panel settings-card wide">
+              <span class="archive-frame"></span>
+              <div class="panel-head"><div><div class="archive-tab">RATING FORMULA / V1</div><h2>当前计算规则</h2></div><span id="formula-tag" class="tag">ARCAEA</span></div>
+              <div class="formula-grid" id="formula-grid"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="first-run" class="modal" hidden>
+    <div class="archive-surface modal-card">
+      <span class="archive-frame"></span>
+      <div class="archive-tab">FIRST LINK / GAME DISCOVERY</div>
+      <h2>连接 In Falsus</h2>
+      <p>可以自动扫描 Steam 游戏库，也可以手动选择游戏目录。曲库信息只从本机游戏 Data 读取。</p>
+      <div class="button-row">
+        <button id="first-auto" class="primary">自动查找 Steam</button>
+        <button id="first-manual">手动选择</button>
+      </div>
+      <p id="first-error" class="error-text"></p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="utils.js"></script>
+  <script src="export-image.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

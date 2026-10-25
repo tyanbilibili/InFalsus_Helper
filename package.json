@@ -1,0 +1,19 @@
+{
+  "name": "infalsus-helper",
+  "productName": "InFalsus Helper",
+  "version": "1.1.0",
+  "description": "In Falsus 本地成绩、Rating、曲库与游戏内浮窗助手",
+  "main": "app/main.js",
+  "author": "InFalsus Helper",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node tests/rating.test.js && node tests/algorithms.test.js && node tests/overlay-state.test.js && node tests/save-reader.test.js && node tests/best-scores.test.js && node tests/rating-delta.test.js",
+    "package": "node build/sync-defaults.js && electron-packager . \"InFalsusHelper\" --platform=win32 --arch=x64 --out=dist --overwrite --asar.unpackDir=app/scripts --app-version=1.1.0 --icon=build/icon.ico --electron-zip-dir=build/electron --win32metadata.CompanyName=\"InFalsus Helper\" --win32metadata.FileDescription=\"InFalsus Helper\" --ignore=\"^/dist\" --ignore=\"^/tests\" --ignore=\"^/build\" --ignore=\"^/user_data\" --ignore=\"^/catalog_data\" --ignore=\"^/app/scripts/__pycache__\" --ignore=\"^/app/scripts/cover-extractor\\.exe$\" --ignore=\"^/[^/]*\\.zip$\" --ignore=\"^/\\.tools\" && node build/release-copy.js"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.0.0"
+  }
+}

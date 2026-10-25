@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; img-src 'self' helper-asset: data:">
+  <title>Rating Overlay</title>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="overlay.css">
+</head>
+<body>
+  <div id="drawer" class="drawer expanded">
+    <span class="frame"></span>
+    <!-- 三栏等高；数字在自己的格子里垂直居中，所以玩家名/变化量与 RATING 的中心线对齐。 -->
+    <div class="row">
+      <div class="cell left">
+        <span class="tag">PLAYER</span>
+        <span class="value"><span class="player" id="ov-player">LOCAL</span></span>
+      </div>
+      <div class="cell center">
+        <span class="tag">RATING</span>
+        <span class="value"><span class="rating" id="ov-rating">--.---</span></span>
+      </div>
+      <div class="cell right">
+        <span class="tag">DELTA / 本次</span>
+        <span class="value"><span class="delta" id="ov-delta">-.-</span></span>
+      </div>
+    </div>
+    <div class="edge"></div>
+  </div>
+  <script src="overlay.js"></script>
+</body>
+</html>

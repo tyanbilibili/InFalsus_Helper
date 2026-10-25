@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "verified_at": "2026-10-15",
+  "reference": "https://wikiwiki.jp/arcaea/FAQ",
+  "reference_scope": "Community-observed font inventory; not an official statement that every Arcaea screen uses one font. Kazesawa for normal Latin text; Noto Sans CJK SC for simplified Chinese. Oxanium is a separate reference-inspired numeric design choice, not a claim about Arcaea or the supplied image font.",
+  "files": [
+    {
+      "file": "Kazesawa-Regular.ttf",
+      "sha256": "2094fcfb791cde6cbfadd76f0ad3a0676507997b8eaec1126ab13444192effa8",
+      "bytes": 1964484,
+      "source": {
+        "url": "https://raw.githubusercontent.com/kazesawa/kazesawa/3789e6d63e1dc666fe6553b665e677e94beb2d5e/out/Kazesawa-Regular.ttf",
+        "sha256": "2094fcfb791cde6cbfadd76f0ad3a0676507997b8eaec1126ab13444192effa8"
+      },
+      "family": "Kazesawa",
+      "weight": "Regular",
+      "version": "Kazesawa-20151218062427"
+    },
+    {
+      "file": "Kazesawa-Bold.ttf",
+      "sha256": "0efbd4a19c1e17e1e9f7af693bb759666b18903bd3ed49e6338686f8753314e4",
+      "bytes": 1961688,
+      "source": {
+        "url": "https://raw.githubusercontent.com/kazesawa/kazesawa/3789e6d63e1dc666fe6553b665e677e94beb2d5e/out/Kazesawa-Bold.ttf",
+        "sha256": "0efbd4a19c1e17e1e9f7af693bb759666b18903bd3ed49e6338686f8753314e4"
+      },
+      "family": "Kazesawa",
+      "weight": "Bold",
+      "version": "Kazesawa-20151218062427"
+    },
+    {
+      "file": "Kazesawa-LICENSE.txt",
+      "sha256": "e4e87bc80075d63c378b0f700693a22b6aadf2e677e6c3cec4c1ea1813cecac7",
+      "bytes": 4731,
+      "source": {
+        "url": "https://raw.githubusercontent.com/kazesawa/kazesawa/3789e6d63e1dc666fe6553b665e677e94beb2d5e/LICENSE.txt",
+        "sha256": "e4e87bc80075d63c378b0f700693a22b6aadf2e677e6c3cec4c1ea1813cecac7"
+      }
+    },
+    {
+      "file": "NotoSansCJK-LICENSE.txt",
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301,
+      "source": {
+        "url": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/LICENSE",
+        "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+      }
+    },
+    {
+      "file": "IFCJKText-Regular.ttf",
+      "sha256": "e16c44931fa41f014f54b8d2488cb6f767fb03fe6eedde1f272a2aa949744a1d",
+      "bytes": 10596272,
+      "source": {
+        "url": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/Variable/TTF/Subset/NotoSansSC-VF.ttf",
+        "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964"
+      },
+      "family": "IF CJK Text",
+      "upstream_family": "Noto Sans SC",
+      "weight": 400,
+      "version": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603",
+      "transformation": "fontTools 4.60.1 static instance; renamed family; unchanged glyph outlines at selected weight"
+    },
+    {
+      "file": "IFCJKText-Bold.ttf",
+      "sha256": "2bd6f85c15c10d617c1a973b5cea9bed786f23ffe2fff57878828383eb5ea85f",
+      "bytes": 10585784,
+      "source": {
+        "url": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/Variable/TTF/Subset/NotoSansSC-VF.ttf",
+        "sha256": "d68bafcb48a2707749396aa12bbbd833cb70401f3a9a689fd2902c7e0d295964"
+      },
+      "family": "IF CJK Text",
+      "upstream_family": "Noto Sans SC",
+      "weight": 700,
+      "version": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603",
+      "transformation": "fontTools 4.60.1 static instance; renamed family; unchanged glyph outlines at selected weight"
+    },
+    {
+      "file": "Oxanium-Regular.ttf",
+      "sha256": "2b9c2a53ee0a8248ab901463838cc81075b410724046a09683b3cc91870fe52a",
+      "bytes": 28848,
+      "source": {
+        "url": "https://raw.githubusercontent.com/sevmeyer/oxanium/a8f39e0c71186190027a093e9001459410192d1e/fonts/ttf/Oxanium-Regular.ttf",
+        "sha256": "2b9c2a53ee0a8248ab901463838cc81075b410724046a09683b3cc91870fe52a"
+      },
+      "family": "Oxanium",
+      "weight": "Regular",
+      "version": "Version 2.000"
+    },
+    {
+      "file": "Oxanium-Bold.ttf",
+      "sha256": "15a44f661fd962c64cabe069a5f9f6fab85a412188f028d3e04da2ff917e37cc",
+      "bytes": 28808,
+      "source": {
+        "url": "https://raw.githubusercontent.com/sevmeyer/oxanium/a8f39e0c71186190027a093e9001459410192d1e/fonts/ttf/Oxanium-Bold.ttf",
+        "sha256": "15a44f661fd962c64cabe069a5f9f6fab85a412188f028d3e04da2ff917e37cc"
+      },
+      "family": "Oxanium",
+      "weight": "Bold",
+      "version": "Version 2.000"
+    },
+    {
+      "file": "Oxanium-LICENSE.txt",
+      "sha256": "fe17c0f2581d71b4e1ea7e636e7f4877c29223e11bb1dd1a871e8c3f2a86336b",
+      "bytes": 4384,
+      "source": {
+        "url": "https://raw.githubusercontent.com/sevmeyer/oxanium/a8f39e0c71186190027a093e9001459410192d1e/OFL.txt",
+        "sha256": "fe17c0f2581d71b4e1ea7e636e7f4877c29223e11bb1dd1a871e8c3f2a86336b"
+      }
+    }
+  ]
+}
